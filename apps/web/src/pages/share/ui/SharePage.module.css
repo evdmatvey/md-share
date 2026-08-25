@@ -1,0 +1,11 @@
+.title {
+  margin: 0 0 var(--space-4);
+  color: var(--color-heading);
+  font-size: var(--font-size-2xl);
+}
+
+.hint {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-code);
+}

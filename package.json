@@ -1,0 +1,20 @@
+{
+  "name": "md-share",
+  "private": true,
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "dev": "pnpm run --parallel --filter @md-share/web --filter @md-share/api dev",
+    "dev:web": "pnpm --filter @md-share/web dev",
+    "dev:api": "pnpm --filter @md-share/api dev",
+    "build": "pnpm -r --if-present build",
+    "lint": "pnpm -r --if-present lint",
+    "lint:fix": "pnpm -r --if-present lint:fix",
+    "format": "pnpm -r --if-present format",
+    "format:fix": "pnpm -r --if-present format:fix",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0"
+  }
+}
