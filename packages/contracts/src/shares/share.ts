@@ -1,9 +1,11 @@
-import z from 'zod';
+import { z } from 'zod';
+
+export const shareSlugSchema = z.string().length(6);
 
 export const shareSchema = z.object({
-  slug: z.string().length(6),
+  slug: shareSlugSchema,
   markdown: z.string().min(1),
-  createdAt: z.string().datetime(),
+  createdAt: z.iso.datetime(),
 });
 
 export type Share = z.infer<typeof shareSchema>;
