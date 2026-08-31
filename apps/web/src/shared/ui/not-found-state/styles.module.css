@@ -1,10 +1,214 @@
-.title {
-  margin: 0 0 var(--space-4);
-  color: var(--color-heading);
-  font-size: var(--font-size-2xl);
+.root {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - var(--header-height) - var(--space-8));
+  padding: var(--space-8) 0;
+  overflow: hidden;
 }
 
-.hint {
-  margin: 0;
+.decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.decorSymbol {
+  position: absolute;
+  color: var(--color-text-subtle);
+  font-family: var(--font-code);
+  font-size: var(--font-size-lg);
+  opacity: 0.35;
+  user-select: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 36rem);
+  text-align: center;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.gutter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-code);
+}
+
+.gutterLine {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 1.25rem;
+}
+
+.gutterNumber {
+  min-width: 1rem;
+  color: var(--color-code-line-number);
+  text-align: right;
+}
+
+.gutterHash {
+  color: var(--color-brand-500);
+  font-weight: var(--font-weight-medium);
+}
+
+.code404 {
+  color: var(--color-text-subtle);
+  font-family: var(--font-code);
+  font-size: clamp(4rem, 14vw, 6.5rem);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-tight);
+  line-height: 1;
+  opacity: 0.55;
+}
+
+.title {
+  margin: 0 0 var(--space-3);
+  color: var(--color-heading);
+  font-family: var(--font-content);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-heading);
+}
+
+.description {
+  max-width: 28rem;
+  margin: 0 0 var(--space-6);
   color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-ui);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  width: 100%;
+  margin-bottom: var(--space-8);
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 10rem;
+  height: var(--control-height-lg);
+  padding: 0 var(--space-5);
+  border: 1px solid transparent;
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-ui);
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    background-color var(--duration-normal) var(--ease-standard),
+    border-color var(--duration-normal) var(--ease-standard),
+    box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.primaryAction {
+  background: var(--color-brand-500);
+  box-shadow: var(--shadow-brand);
+  color: var(--color-text-on-brand);
+}
+
+.primaryAction:hover {
+  background: var(--color-brand-600);
+}
+
+.secondaryAction {
+  background: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.secondaryAction:hover {
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-strong);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+  outline: var(--focus-ring-width) solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.urlBar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  min-width: 0;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-code-border);
+  border-radius: var(--radius-md);
+  background: var(--color-code-bg);
+}
+
+.urlLineNumber {
+  flex-shrink: 0;
+  min-width: 1rem;
+  color: var(--color-code-line-number);
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  text-align: right;
+}
+
+.urlText {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--color-link);
+  font-family: var(--font-code);
+  font-size: var(--font-size-sm);
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.urlIcon {
+  flex-shrink: 0;
+  color: var(--color-icon-muted);
+}
+
+@media (min-width: 48rem) {
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+
+  .description {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 47.99rem) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    width: 100%;
+    min-width: 0;
+  }
 }
