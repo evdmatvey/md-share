@@ -42,7 +42,7 @@ export const SharePage = () => {
   const activeHeadingId = useActiveHeading(contentRef, headingIds);
 
   if (!isValidSlug) {
-    return <NotFoundState />;
+    return <NotFoundState variant="document" slug={slug} />;
   }
 
   if (shareQuery.isPending) {
@@ -58,10 +58,10 @@ export const SharePage = () => {
       isApiRequestError(shareQuery.error) &&
       shareQuery.error.error === SharesErrorCode.NOT_FOUND
     ) {
-      return <NotFoundState />;
+      return <NotFoundState variant="document" slug={slug} />;
     }
 
-    return <NotFoundState />;
+    return <NotFoundState variant="document" slug={slug} />;
   }
 
   const share = shareQuery.data;
