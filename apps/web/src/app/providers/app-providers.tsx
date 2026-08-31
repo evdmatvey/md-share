@@ -1,7 +1,6 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import type { ReactNode } from 'react';
 import { queryClient } from '@shared/api/query-client';
-import { HeaderSlotProvider } from '@shared/ui/app-header';
 
 type AppProvidersProps = {
   children: ReactNode;
@@ -9,8 +8,6 @@ type AppProvidersProps = {
 
 export const AppProviders = ({ children }: AppProvidersProps) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <HeaderSlotProvider>{children}</HeaderSlotProvider>
-    </QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
   );
 };

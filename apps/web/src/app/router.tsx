@@ -2,7 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HomePage } from '@pages/home';
 import { NotFoundPage } from '@pages/not-found';
 import { SharePage } from '@pages/share';
-import { AppLayout } from '@shared/ui/app-layout';
+import { AppLayout } from './app-layout';
 
 export const AppRouter = () => {
   return (

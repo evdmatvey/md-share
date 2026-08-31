@@ -90,11 +90,6 @@ export default defineConfig(
               message:
                 'shared segment barrels are forbidden — import from submodule or file (e.g. @shared/ui/theme-toggle)',
             },
-            {
-              name: '@shared/messages',
-              message:
-                'shared segment barrels are forbidden — import from submodule or file (e.g. @shared/messages/strings)',
-            },
           ],
         },
       ],
