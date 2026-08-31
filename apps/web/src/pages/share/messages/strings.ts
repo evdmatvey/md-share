@@ -1,5 +1,7 @@
 export const shareMessages = {
   loading: 'Загрузка…',
+  loadError: 'Не удалось загрузить документ.',
+  retry: 'Повторить',
   copyMarkdown: 'Скопировать Markdown',
   copiedMarkdown: 'Скопировано',
   share: 'Поделиться',

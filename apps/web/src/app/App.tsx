@@ -1,10 +1,13 @@
+import { ErrorBoundary } from '@shared/ui/error-boundary';
 import { AppProviders } from './providers/AppProviders';
 import { AppRouter } from './router';
 
 export const App = () => {
   return (
     <AppProviders>
-      <AppRouter />
+      <ErrorBoundary>
+        <AppRouter />
+      </ErrorBoundary>
     </AppProviders>
   );
 };

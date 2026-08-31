@@ -11,6 +11,7 @@ export const homeMessages = {
   open: 'Открыть',
   close: 'Закрыть',
   editorLabel: 'Текст Markdown',
+  shareError: 'Не удалось опубликовать Markdown. Попробуйте ещё раз.',
   sampleMarkdown: `# Заголовок
 
 Это **Markdown**, который сразу рендерится справа.

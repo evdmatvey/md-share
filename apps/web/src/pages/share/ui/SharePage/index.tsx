@@ -61,7 +61,27 @@ export const SharePage = () => {
       return <NotFoundState variant="document" slug={slug} />;
     }
 
-    return <NotFoundState variant="document" slug={slug} />;
+    const errorMessage =
+      shareQuery.error instanceof Error
+        ? shareQuery.error.message
+        : shareMessages.loadError;
+
+    return (
+      <section className={styles.state}>
+        <div className={styles.errorState}>
+          <p className={styles.errorMessage} role="alert">
+            {errorMessage}
+          </p>
+          <Button
+            onClick={() => {
+              void shareQuery.refetch();
+            }}
+          >
+            {shareMessages.retry}
+          </Button>
+        </div>
+      </section>
+    );
   }
 
   const share = shareQuery.data;

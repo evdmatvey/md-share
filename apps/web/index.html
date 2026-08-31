@@ -4,6 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MDShare</title>
+    <meta
+      name="description"
+      content="Делитесь Markdown по короткой ссылке — вставьте текст и получите ссылку для просмотра."
+    />
+    <meta property="og:title" content="MDShare" />
+    <meta
+      property="og:description"
+      content="Делитесь Markdown по короткой ссылке — вставьте текст и получите ссылку для просмотра."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta
+      property="og:image"
+      content="__MDSHARE_SITE_URL__/icons/web-app-manifest-512x512.png"
+    />
+    <meta property="og:url" content="__MDSHARE_SITE_URL__/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="MDShare" />
+    <link rel="icon" href="/icons/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#ebe5ff" id="theme-color-meta" />
     <link rel="stylesheet" href="/src/app/styles/tokens.css" />
     <script>
       (function () {
@@ -16,6 +39,13 @@
                 ? 'dark'
                 : 'light';
           document.documentElement.dataset.theme = theme;
+          var themeColorMeta = document.getElementById('theme-color-meta');
+          if (themeColorMeta) {
+            themeColorMeta.setAttribute(
+              'content',
+              theme === 'dark' ? '#12141a' : '#ebe5ff',
+            );
+          }
         } catch (e) {}
       })();
     </script>

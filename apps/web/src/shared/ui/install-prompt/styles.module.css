@@ -1,0 +1,58 @@
+.installButton {
+  display: none;
+}
+
+@media (width >= 640px) {
+  .installButton {
+    display: inline-flex;
+  }
+}
+
+.iosHint {
+  position: fixed;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  left: var(--space-4);
+  z-index: var(--z-install-hint, 900);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-raised);
+  box-shadow: var(--shadow-lg);
+}
+
+.iosHintText {
+  flex: 1;
+  margin: 0;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+}
+
+.iosHintClose {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-icon-muted);
+  cursor: pointer;
+}
+
+.iosHintClose:hover {
+  color: var(--color-text);
+}
+
+@media (width >= 640px) {
+  .iosHint {
+    right: var(--space-6);
+    bottom: var(--space-6);
+    left: auto;
+    max-width: 22rem;
+  }
+}
