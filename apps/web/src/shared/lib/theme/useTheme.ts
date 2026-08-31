@@ -3,20 +3,13 @@ import {
   THEME_STORAGE_KEY,
   type Theme,
   applyTheme,
-  getStoredTheme,
+  getSystemTheme,
   setTheme as persistTheme,
+  resolveTheme,
 } from './theme';
 
-const readTheme = (): Theme => {
-  if (document.documentElement.dataset.theme === 'dark') {
-    return 'dark';
-  }
-
-  return getStoredTheme() ?? 'light';
-};
-
 export const useTheme = () => {
-  const [theme, setThemeState] = useState<Theme>(readTheme);
+  const [theme, setThemeState] = useState<Theme>(resolveTheme);
 
   const setTheme = useCallback((next: Theme) => {
     persistTheme(next);
@@ -36,9 +29,9 @@ export const useTheme = () => {
       const next: Theme =
         event.newValue === 'dark' || event.newValue === 'light'
           ? event.newValue
-          : 'light';
+          : getSystemTheme();
 
-      applyTheme(next);
+      applyTheme(next, { animate: false });
       setThemeState(next);
     };
 

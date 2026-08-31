@@ -8,12 +8,34 @@ export const getStoredTheme = (): Theme | null => {
   return value === 'light' || value === 'dark' ? value : null;
 };
 
-export const applyTheme = (theme: Theme) => {
-  document.documentElement.dataset.theme = theme;
+export const getSystemTheme = (): Theme =>
+  window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+export const resolveTheme = (): Theme => getStoredTheme() ?? getSystemTheme();
+
+export const prefersReducedMotion = (): boolean =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+export const applyTheme = (theme: Theme, options?: { animate?: boolean }) => {
+  const update = () => {
+    document.documentElement.dataset.theme = theme;
+  };
+
+  const canAnimate =
+    options?.animate &&
+    !prefersReducedMotion() &&
+    typeof document.startViewTransition === 'function';
+
+  if (canAnimate) {
+    document.startViewTransition(update);
+    return;
+  }
+
+  update();
 };
 
 export const setTheme = (theme: Theme) => {
-  applyTheme(theme);
+  applyTheme(theme, { animate: true });
   localStorage.setItem(THEME_STORAGE_KEY, theme);
 };
 
