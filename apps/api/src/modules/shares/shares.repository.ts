@@ -10,4 +10,8 @@ export class SharesRepository {
   public async createShare(data: CreateShareDto): Promise<Share> {
     return this.prisma.share.create({ data });
   }
+
+  public async findBySlug(slug: string): Promise<Share | null> {
+    return this.prisma.share.findUnique({ where: { slug } });
+  }
 }
