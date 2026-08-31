@@ -17,6 +17,22 @@
   font-size: var(--font-size-md);
 }
 
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: 24rem;
+  text-align: center;
+}
+
+.errorMessage {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-relaxed);
+}
+
 .layout {
   display: grid;
   gap: var(--space-4);

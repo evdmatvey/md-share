@@ -2,6 +2,11 @@ export const THEME_STORAGE_KEY = 'md-share-theme';
 
 export type Theme = 'light' | 'dark';
 
+const THEME_COLORS: Record<Theme, string> = {
+  light: '#ebe5ff',
+  dark: '#12141a',
+};
+
 export const getStoredTheme = (): Theme | null => {
   const value = localStorage.getItem(THEME_STORAGE_KEY);
 
@@ -19,6 +24,9 @@ export const prefersReducedMotion = (): boolean =>
 export const applyTheme = (theme: Theme, options?: { animate?: boolean }) => {
   const update = () => {
     document.documentElement.dataset.theme = theme;
+    document
+      .getElementById('theme-color-meta')
+      ?.setAttribute('content', THEME_COLORS[theme]);
   };
 
   const canAnimate =

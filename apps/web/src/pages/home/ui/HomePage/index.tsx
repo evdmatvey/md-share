@@ -4,12 +4,15 @@ import {
   IconMarkdown,
   IconShare2,
 } from '@tabler/icons-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { isApiRequestError } from '@shared/api/api-error';
 import { HeaderActions } from '@shared/ui/app-header';
 import { Button } from '@shared/ui/button';
 import { MarkdownPreview } from '@shared/ui/markdown-preview';
+import { useToast } from '@shared/ui/toast';
 import { useCreateShare } from '../../api/use-create-share';
 import { homeMessages } from '../../messages/strings';
+import { useDraftMarkdown } from '../../model/use-draft-markdown';
 import { MarkdownEditor } from '../MarkdownEditor';
 import { PublishedCard } from '../PublishedCard';
 import styles from './styles.module.css';
@@ -17,17 +20,37 @@ import styles from './styles.module.css';
 type WorkspaceTab = 'markdown' | 'preview';
 
 export const HomePage = () => {
-  const [markdown, setMarkdown] = useState<string>(homeMessages.sampleMarkdown);
+  const { markdown, setMarkdown, resetDraft } = useDraftMarkdown();
   const [tab, setTab] = useState<WorkspaceTab>('markdown');
   const [publishedSlug, setPublishedSlug] = useState<string | null>(null);
   const createShare = useCreateShare();
+  const { showToast } = useToast();
 
   const canShare = markdown.trim().length > 0 && !createShare.isPending;
   const shareLabel = createShare.isPending
     ? homeMessages.sharing
     : homeMessages.share;
-  const errorMessage =
-    createShare.error instanceof Error ? createShare.error.message : null;
+
+  useEffect(() => {
+    if (createShare.error === null) {
+      return;
+    }
+
+    const message =
+      createShare.error instanceof Error
+        ? createShare.error.message
+        : homeMessages.shareError;
+
+    if (
+      isApiRequestError(createShare.error) &&
+      (createShare.error.kind === 'network' ||
+        createShare.error.kind === 'timeout')
+    ) {
+      return;
+    }
+
+    showToast({ variant: 'error', message });
+  }, [createShare.error, showToast]);
 
   const handleShare = () => {
     if (!canShare) {
@@ -36,6 +59,7 @@ export const HomePage = () => {
 
     createShare.mutate(markdown.trim(), {
       onSuccess: (share) => {
+        resetDraft();
         setPublishedSlug(share.slug);
       },
     });
@@ -111,12 +135,6 @@ export const HomePage = () => {
           <MarkdownPreview markdown={markdown} />
         </div>
       </div>
-
-      {errorMessage !== null && (
-        <p className={styles.error} role="alert">
-          {errorMessage}
-        </p>
-      )}
 
       {publishedSlug !== null && (
         <div className={styles.published}>
