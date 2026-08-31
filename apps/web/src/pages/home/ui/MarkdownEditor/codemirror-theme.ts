@@ -33,6 +33,12 @@ export const editorTheme = EditorView.theme({
     minWidth: '2.5rem',
     textAlign: 'right',
   },
+  '.cm-activeLineGutter': {
+    backgroundColor: 'var(--color-code-active-line-bg) !important',
+  },
+  '.cm-activeLineGutter .cm-gutterElement': {
+    color: 'var(--color-code-active-line-number)',
+  },
   '&.cm-focused .cm-selectionBackground, .cm-selectionBackground': {
     backgroundColor: 'var(--color-selection) !important',
   },
@@ -52,7 +58,7 @@ const highlightStyle = HighlightStyle.define([
   },
   {
     tag: tags.heading2,
-    color: 'var(--color-brand-600)',
+    color: 'var(--color-heading-accent)',
     fontWeight: 'var(--font-weight-bold)',
   },
   {
