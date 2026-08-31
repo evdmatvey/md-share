@@ -1,0 +1,40 @@
+.root {
+  height: var(--header-height);
+  flex-shrink: 0;
+  padding: 0 var(--page-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-strong);
+  letter-spacing: var(--letter-spacing-ui);
+  font-weight: var(--font-weight-semibold);
+  font-family: var(--font-content);
+  font-size: var(--font-size-xl);
+  text-decoration: none;
+}
+
+.logoIcon {
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-brand-500);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}

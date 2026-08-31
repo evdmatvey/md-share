@@ -7,3 +7,12 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model Share {
+  id        String   @id @default(uuid(7)) @db.Uuid
+  slug      String   @unique
+  markdown  String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("shares")
+}
