@@ -1,0 +1,15 @@
+export const shareMessages = {
+  loading: 'Загрузка…',
+  copyMarkdown: 'Скопировать Markdown',
+  copiedMarkdown: 'Скопировано',
+  share: 'Поделиться',
+  toc: 'Оглавление',
+  closeToc: 'Закрыть',
+  publishedToday: 'Опубликовано сегодня',
+  publishedYesterday: 'Опубликовано вчера',
+  publishedOn: 'Опубликовано',
+  brandTagline: 'Простой способ делиться Markdown',
+  ctaTitle: 'Хотите поделиться своим Markdown?',
+  ctaButton: 'Создать документ',
+  shareTitle: 'MDShare',
+} as const;

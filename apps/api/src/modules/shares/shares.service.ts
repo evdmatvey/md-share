@@ -3,6 +3,7 @@ import {
   type CreateShareRequest,
   type Share,
   SharesErrorCode,
+  shareSlugSchema,
 } from '@md-share/contracts';
 import { nanoid } from 'nanoid';
 import { ApiException } from '@/common/exceptions';
@@ -45,5 +46,27 @@ export class SharesService {
       SharesErrorCode.SLUG_GENERATION_FAILED,
       SharesMessages.SLUG_GENERATION_FAILED,
     );
+  }
+
+  public async getShareBySlug(slug: string): Promise<Share> {
+    if (!shareSlugSchema.safeParse(slug).success) {
+      throw new ApiException(
+        404,
+        SharesErrorCode.NOT_FOUND,
+        SharesMessages.NOT_FOUND,
+      );
+    }
+
+    const share = await this._repository.findBySlug(slug);
+
+    if (share === null) {
+      throw new ApiException(
+        404,
+        SharesErrorCode.NOT_FOUND,
+        SharesMessages.NOT_FOUND,
+      );
+    }
+
+    return toShare(share);
   }
 }

@@ -7,8 +7,8 @@ import {
 } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { shareDisplayUrl, sharePath, shareUrl } from '@shared/lib/share-url';
 import { Button } from '@shared/ui/button';
-import { shareDisplayUrl, sharePath, shareUrl } from '../../lib/share-url';
 import { homeMessages } from '../../messages/strings';
 import styles from './styles.module.css';
 

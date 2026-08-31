@@ -12,3 +12,9 @@ export const createShare = async (markdown: string): Promise<Share> => {
 
   return shareEnvelopeSchema.parse(response.data).data;
 };
+
+export const getShareBySlug = async (slug: string): Promise<Share> => {
+  const response = await httpClient.get(`/v1/shares/${slug}`);
+
+  return shareEnvelopeSchema.parse(response.data).data;
+};

@@ -7,10 +7,10 @@ import {
 import { useState } from 'react';
 import { HeaderActions } from '@shared/ui/app-header';
 import { Button } from '@shared/ui/button';
+import { MarkdownPreview } from '@shared/ui/markdown-preview';
 import { useCreateShare } from '../../api/use-create-share';
 import { homeMessages } from '../../messages/strings';
 import { MarkdownEditor } from '../MarkdownEditor';
-import { MarkdownPreview } from '../MarkdownPreview';
 import { PublishedCard } from '../PublishedCard';
 import styles from './styles.module.css';
 

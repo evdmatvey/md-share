@@ -1,12 +1,14 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
+  Param,
   Post,
   SerializeOptions,
 } from '@nestjs/common';
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger';
+import { ApiCreatedResponse, ApiResponse, ApiTags } from '@nestjs/swagger';
 import {
   CommonErrorCode,
   SharesErrorCode,
@@ -24,7 +26,7 @@ import { ApiErrorResponse } from '@/common/openapi';
 import { SharesMessages } from './messages';
 import { SharesService } from './shares.service';
 
-const createShareResponseSchema = dataEnvelopeSchema(shareSchema);
+const shareResponseSchema = dataEnvelopeSchema(shareSchema);
 
 @ApiTags('shares')
 @Controller('shares')
@@ -33,8 +35,8 @@ export class SharesController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  @SerializeOptions({ schema: createShareResponseSchema })
-  @ApiCreatedResponse({ standardSchema: createShareResponseSchema })
+  @SerializeOptions({ schema: shareResponseSchema })
+  @ApiCreatedResponse({ standardSchema: shareResponseSchema })
   @ApiErrorResponse(
     HttpStatus.BAD_REQUEST,
     CommonErrorCode.REQUEST_VALIDATION,
@@ -55,6 +57,27 @@ export class SharesController {
     @Body({ schema: createShareRequestSchema }) data: CreateShareRequest,
   ): Promise<DataEnvelope<Share>> {
     const share = await this._sharesService.createShare(data);
+
+    return { data: share };
+  }
+
+  @Get(':slug')
+  @SerializeOptions({ schema: shareResponseSchema })
+  @ApiResponse({ status: 200, standardSchema: shareResponseSchema })
+  @ApiErrorResponse(
+    HttpStatus.NOT_FOUND,
+    SharesErrorCode.NOT_FOUND,
+    SharesMessages.NOT_FOUND,
+  )
+  @ApiErrorResponse(
+    HttpStatus.INTERNAL_SERVER_ERROR,
+    CommonErrorCode.INTERNAL_ERROR,
+    CommonMessages.INTERNAL_ERROR,
+  )
+  public async getShare(
+    @Param('slug') slug: string,
+  ): Promise<DataEnvelope<Share>> {
+    const share = await this._sharesService.getShareBySlug(slug);
 
     return { data: share };
   }

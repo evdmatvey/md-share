@@ -30,6 +30,7 @@
   font-weight: var(--font-weight-bold);
   letter-spacing: var(--letter-spacing-tight);
   line-height: var(--line-height-heading);
+  scroll-margin-top: var(--space-4);
 }
 
 .content :global(h1) {
@@ -37,7 +38,7 @@
 }
 
 .content :global(h2) {
-  color: var(--color-brand-600);
+  color: var(--color-heading-accent);
   font-size: var(--font-size-2xl);
 }
 
