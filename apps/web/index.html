@@ -4,13 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MDShare</title>
+    <link rel="stylesheet" href="/src/app/styles/tokens.css" />
     <script>
       (function () {
         try {
-          var theme = localStorage.getItem('md-share-theme');
-          if (theme === 'dark' || theme === 'light') {
-            document.documentElement.dataset.theme = theme;
-          }
+          var stored = localStorage.getItem('md-share-theme');
+          var theme =
+            stored === 'dark' || stored === 'light'
+              ? stored
+              : window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light';
+          document.documentElement.dataset.theme = theme;
         } catch (e) {}
       })();
     </script>
