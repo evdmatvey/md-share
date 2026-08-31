@@ -46,6 +46,7 @@
 
   /* Markdown content */
   --color-heading: #202126;
+  --color-heading-accent: #6845eb;
   --color-link: #6845eb;
   --color-quote-border: #8b6bff;
   --color-quote-bg: #f8f6ff;
@@ -56,6 +57,8 @@
   --color-code-border: #e4e4e0;
   --color-code-text: #383a42;
   --color-code-line-number: #a0a2aa;
+  --color-code-active-line-bg: rgb(124 92 252 / 6%);
+  --color-code-active-line-number: #7c5cfc;
   --color-code-keyword: #a626a4;
   --color-code-function: #5a46c8;
   --color-code-string: #2f8a55;
@@ -182,6 +185,7 @@
 
   /* Markdown content */
   --color-heading: #f2f1ed;
+  --color-heading-accent: #bda7ff;
   --color-link: #a78cff;
   --color-quote-border: #8b6bff;
   --color-quote-bg: #171621;
@@ -192,6 +196,8 @@
   --color-code-border: #292c36;
   --color-code-text: #d9d9de;
   --color-code-line-number: #636773;
+  --color-code-active-line-bg: rgb(124 92 252 / 10%);
+  --color-code-active-line-number: #a991ff;
   --color-code-keyword: #d779d2;
   --color-code-function: #a991ff;
   --color-code-string: #83d49b;
