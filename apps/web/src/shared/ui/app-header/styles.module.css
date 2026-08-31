@@ -38,3 +38,7 @@
   align-items: center;
   gap: var(--space-3);
 }
+
+.actions:empty {
+  display: none;
+}
