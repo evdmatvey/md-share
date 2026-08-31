@@ -15,6 +15,14 @@ export default defineConfig(({ mode }) => {
   return {
     envDir: rootEnvDir,
     plugins: [react(), tsconfigPaths()],
+    resolve: {
+      alias: {
+        '@md-share/contracts': path.resolve(
+          rootEnvDir,
+          'packages/contracts/src/index.ts',
+        ),
+      },
+    },
     server: {
       port: Number(env.VITE_PORT ?? 5173),
       proxy: {

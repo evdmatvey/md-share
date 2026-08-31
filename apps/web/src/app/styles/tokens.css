@@ -64,9 +64,9 @@
   --color-code-operator: #177d91;
 
   /* Typography */
-  --font-ui: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-  --font-content: 'Source Serif 4', Georgia, 'Times New Roman', serif;
-  --font-code: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+  --font-ui: 'Inter Variable', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-content: 'Source Serif 4 Variable', Georgia, 'Times New Roman', serif;
+  --font-code: 'JetBrains Mono Variable', 'Cascadia Code', Consolas, monospace;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.8125rem;
@@ -112,7 +112,7 @@
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
   --radius-xl: 1rem;
-  --radius-pill: 999px;
+  --radius-full: 100%;
 
   /* Elevation */
   --shadow-xs: 0 1px 2px rgb(20 20 24 / 5%);
@@ -126,6 +126,30 @@
   --duration-normal: 200ms;
   --duration-slow: 320ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  /* Controls */
+  --control-height-sm: 2rem;
+  --control-height-md: 2.5rem;
+  --control-height-lg: 2.875rem;
+  --control-padding-x: 1rem;
+  --focus-ring-width: 3px;
+
+  /* Scrollbars */
+  --scrollbar-size: 6px;
+  --scrollbar-track: transparent;
+  --scrollbar-thumb: #cbcbd0;
+  --scrollbar-thumb-hover: #858892;
+
+  /* Layout */
+  --header-height: 3.5rem;
+  --page-gutter: 1.5rem;
+  --mobile-breakpoint: 48rem;
+}
+
+@media (max-width: 47.99rem) {
+  :root {
+    --page-gutter: 0.75rem;
+  }
 }
 
 [data-theme='dark'] {
@@ -174,6 +198,10 @@
   --color-code-number: #efae68;
   --color-code-comment: #767b87;
   --color-code-operator: #70c6d3;
+
+  /* Scrollbars */
+  --scrollbar-thumb: #3a3e49;
+  --scrollbar-thumb-hover: #636773;
 
   /* Elevation */
   --shadow-xs: 0 1px 2px rgb(0 0 0 / 24%);
