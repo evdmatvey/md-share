@@ -18,6 +18,10 @@
   --color-success-soft: #eaf8ef;
   --color-warning: #e5a63b;
   --color-danger: #df5b63;
+  --color-action-primary-bg: #6845eb;
+  --color-action-primary-bg-hover: #5736c7;
+  --color-accent-text: #6845eb;
+  --color-not-found-code: #686b73;
 
   /* Application surfaces */
   --color-canvas: #fafaf8;
@@ -56,9 +60,9 @@
   --color-code-bg: #f8f8f6;
   --color-code-border: #e4e4e0;
   --color-code-text: #383a42;
-  --color-code-line-number: #a0a2aa;
+  --color-code-line-number: #686b73;
   --color-code-active-line-bg: rgb(124 92 252 / 6%);
-  --color-code-active-line-number: #7c5cfc;
+  --color-code-active-line-number: var(--color-accent-text);
   --color-code-keyword: #a626a4;
   --color-code-function: #5a46c8;
   --color-code-string: #2f8a55;
@@ -175,6 +179,8 @@
   --color-text-on-brand: #ffffff;
   --color-icon: #c0c2ca;
   --color-icon-muted: #858995;
+  --color-accent-text: #8b6bff;
+  --color-not-found-code: #747883;
 
   /* Borders and focus */
   --color-border: #292c36;
@@ -195,9 +201,9 @@
   --color-code-bg: #101218;
   --color-code-border: #292c36;
   --color-code-text: #d9d9de;
-  --color-code-line-number: #636773;
+  --color-code-line-number: #858995;
   --color-code-active-line-bg: rgb(124 92 252 / 10%);
-  --color-code-active-line-number: #a991ff;
+  --color-code-active-line-number: var(--color-accent-text);
   --color-code-keyword: #d779d2;
   --color-code-function: #a991ff;
   --color-code-string: #83d49b;

@@ -44,7 +44,7 @@
 }
 
 .item[data-active='true'] {
-  border-left-color: var(--color-brand-500);
+  border-left-color: var(--color-accent-text);
 }
 
 .item[data-depth='2'] {
@@ -72,7 +72,7 @@
 }
 
 .item[data-active='true'] .link {
-  color: var(--color-brand-500);
+  color: var(--color-accent-text);
   font-weight: var(--font-weight-medium);
 }
 

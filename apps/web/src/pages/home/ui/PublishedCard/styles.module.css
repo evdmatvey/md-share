@@ -86,7 +86,7 @@
   height: var(--control-height-md);
   padding: 0 var(--control-padding-x);
   border-radius: var(--radius-lg);
-  background: var(--color-brand-500);
+  background: var(--color-action-primary-bg);
   box-shadow: var(--shadow-brand);
   color: var(--color-text-on-brand);
   font-size: var(--font-size-md);
@@ -96,7 +96,7 @@
 }
 
 .open:hover {
-  background: var(--color-brand-600);
+  background: var(--color-action-primary-bg-hover);
 }
 
 .open:focus-visible {

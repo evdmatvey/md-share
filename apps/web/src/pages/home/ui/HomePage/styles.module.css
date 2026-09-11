@@ -43,8 +43,8 @@
 }
 
 .tabActive {
-  color: var(--color-brand-600);
-  border-bottom-color: var(--color-brand-500);
+  color: var(--color-accent-text);
+  border-bottom-color: var(--color-accent-text);
 }
 
 .card {
