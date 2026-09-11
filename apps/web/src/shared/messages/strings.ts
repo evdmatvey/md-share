@@ -11,4 +11,6 @@ export const commonMessages = {
   installIosHint:
     'Чтобы добавить на главный экран: нажмите «Поделиться», затем «На экран Домой».',
   installDismiss: 'Закрыть',
+  enableLightTheme: 'Включить светлую тему',
+  enableDarkTheme: 'Включить тёмную тему',
 } as const;
