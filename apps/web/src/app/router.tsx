@@ -3,10 +3,12 @@ import { HomePage } from '@pages/home';
 import { NotFoundPage } from '@pages/not-found';
 import { SharePage } from '@pages/share';
 import { AppLayout } from '@shared/ui/app-layout';
+import { DocumentRobotsMeta } from './DocumentRobotsMeta';
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
+      <DocumentRobotsMeta />
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomePage />} />
