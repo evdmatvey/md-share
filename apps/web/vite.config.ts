@@ -116,7 +116,13 @@ export default defineConfig(({ mode }) => {
     server: {
       port: Number(devPort),
       proxy: {
-        '/api': `http://localhost:${env.PORT ?? '3000'}`,
+        '/api': `http://127.0.0.1:${env.PORT ?? '3000'}`,
+      },
+    },
+    preview: {
+      port: Number(devPort),
+      proxy: {
+        '/api': `http://127.0.0.1:${env.PORT ?? '3000'}`,
       },
     },
   };
