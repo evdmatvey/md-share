@@ -26,7 +26,7 @@
   height: var(--control-height-lg);
   padding: 0 var(--space-5);
   border-radius: var(--radius-lg);
-  background: var(--color-brand-500);
+  background: var(--color-action-primary-bg);
   box-shadow: var(--shadow-brand);
   color: var(--color-text-on-brand);
   font-size: var(--font-size-md);
@@ -37,7 +37,7 @@
 }
 
 .button:hover {
-  background: var(--color-brand-600);
+  background: var(--color-action-primary-bg-hover);
 }
 
 .button:focus-visible {

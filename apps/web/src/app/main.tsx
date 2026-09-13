@@ -3,12 +3,12 @@ import '@fontsource-variable/jetbrains-mono/wght.css';
 import '@fontsource-variable/source-serif-4/wght.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { registerSW } from 'virtual:pwa-register';
 import { App } from './App';
+import { registerPwa } from './register-pwa';
 import './styles/global.css';
 import './styles/tokens.css';
 
-registerSW({ immediate: true });
+registerPwa();
 
 const rootElement = document.getElementById('root');
 

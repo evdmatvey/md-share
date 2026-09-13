@@ -1,0 +1,5 @@
+# MDShare
+
+> MDShare публикует Markdown по короткой публичной ссылке без авторизации.
+
+- [Создать публикацию](https://md-share.evdmatvey.ru/)

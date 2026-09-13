@@ -38,13 +38,13 @@
 }
 
 .primary {
-  background: var(--color-brand-500);
+  background: var(--color-action-primary-bg);
   color: var(--color-text-on-brand);
   box-shadow: var(--shadow-brand);
 }
 
 .primary:hover:not(:disabled) {
-  background: var(--color-brand-600);
+  background: var(--color-action-primary-bg-hover);
 }
 
 .secondary {
@@ -73,12 +73,12 @@
   width: var(--control-height-md);
   padding: 0;
   background: var(--color-surface);
-  border-color: var(--color-brand-500);
-  color: var(--color-brand-500);
+  border-color: var(--color-accent-text);
+  color: var(--color-accent-text);
 }
 
 .icon:hover:not(:disabled) {
   background: var(--color-surface-hover);
-  border-color: var(--color-brand-600);
-  color: var(--color-brand-600);
+  border-color: var(--color-accent-text);
+  color: var(--color-accent-text);
 }

@@ -27,6 +27,8 @@ export default defineConfig(
       '.prettierrc.cjs',
       'steiger.config.mjs',
       'vite.config.ts',
+      'pwa-workbox.ts',
+      'scripts/**',
       'node_modules',
       'dist',
     ],

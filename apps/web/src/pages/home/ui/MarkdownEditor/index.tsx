@@ -16,6 +16,9 @@ export const MarkdownEditor = ({ value, onChange }: MarkdownEditorProps) => {
   const extensions = useMemo(
     () => [
       EditorView.lineWrapping,
+      EditorView.contentAttributes.of({
+        'aria-label': homeMessages.editorLabel,
+      }),
       markdown({ base: markdownLanguage, codeLanguages: languages }),
       editorTheme,
       markdownHighlighting,
@@ -39,7 +42,6 @@ export const MarkdownEditor = ({ value, onChange }: MarkdownEditorProps) => {
           highlightSelectionMatches: false,
         }}
         spellCheck={false}
-        aria-label={homeMessages.editorLabel}
       />
     </div>
   );
