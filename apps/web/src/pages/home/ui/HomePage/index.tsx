@@ -4,7 +4,7 @@ import {
   IconMarkdown,
   IconShare2,
 } from '@tabler/icons-react';
-import { useEffect, useState } from 'react';
+import { useDeferredValue, useEffect, useState } from 'react';
 import { isApiRequestError } from '@shared/api/api-error';
 import { HeaderActions } from '@shared/ui/app-header';
 import { Button } from '@shared/ui/button';
@@ -12,6 +12,7 @@ import { MarkdownPreview } from '@shared/ui/markdown-preview';
 import { useToast } from '@shared/ui/toast';
 import { useCreateShare } from '../../api/use-create-share';
 import { homeMessages } from '../../messages/strings';
+import { useCompactWorkspace } from '../../model/use-compact-workspace';
 import { useDraftMarkdown } from '../../model/use-draft-markdown';
 import { MarkdownEditor } from '../MarkdownEditor';
 import { PublishedCard } from '../PublishedCard';
@@ -25,6 +26,10 @@ export const HomePage = () => {
   const [publishedSlug, setPublishedSlug] = useState<string | null>(null);
   const createShare = useCreateShare();
   const { showToast } = useToast();
+  const isCompact = useCompactWorkspace();
+  const deferredMarkdown = useDeferredValue(markdown);
+  const showPreview = !isCompact || tab === 'preview';
+  const previewMarkdown = isCompact ? markdown : deferredMarkdown;
 
   const canShare = markdown.trim().length > 0 && !createShare.isPending;
   const shareLabel = createShare.isPending
@@ -132,7 +137,7 @@ export const HomePage = () => {
             <IconEye className={styles.paneIcon} size={24} />
             <span>{homeMessages.previewPane}</span>
           </div>
-          <MarkdownPreview markdown={markdown} />
+          {showPreview && <MarkdownPreview markdown={previewMarkdown} />}
         </div>
       </div>
 
