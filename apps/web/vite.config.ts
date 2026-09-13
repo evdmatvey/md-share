@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { type Connect, type Plugin, defineConfig, loadEnv } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { chunkFileNames, pwaWorkboxOptions } from './pwa-workbox';
 
 const rootEnvDir = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
@@ -60,13 +61,7 @@ export default defineConfig(({ mode }) => {
       crawlerTextCharset(),
       VitePWA({
         registerType: 'autoUpdate',
-        includeAssets: [
-          'icons/favicon.ico',
-          'icons/favicon.svg',
-          'icons/apple-touch-icon.png',
-          'robots.txt',
-          'llms.txt',
-        ],
+        includeAssets: [],
         manifest: {
           name: 'MDShare',
           short_name: 'MDShare',
@@ -98,15 +93,7 @@ export default defineConfig(({ mode }) => {
             },
           ],
         },
-        workbox: {
-          globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-          navigateFallback: '/index.html',
-          navigateFallbackDenylist: [
-            /^\/api/,
-            /^\/robots\.txt$/,
-            /^\/llms\.txt$/,
-          ],
-        },
+        workbox: pwaWorkboxOptions,
       }),
     ],
     resolve: {
@@ -115,6 +102,15 @@ export default defineConfig(({ mode }) => {
           rootEnvDir,
           'packages/contracts/src/index.ts',
         ),
+      },
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/[name]-[hash].js',
+          chunkFileNames,
+          assetFileNames: 'assets/[name]-[hash][extname]',
+        },
       },
     },
     server: {
