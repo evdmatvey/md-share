@@ -2,6 +2,7 @@ import 'katex/dist/katex.min.css';
 import type { ComponentProps, RefObject } from 'react';
 import { memo, useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import type { Components } from 'react-markdown';
 import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
@@ -19,6 +20,14 @@ type MarkdownPreviewProps = {
 type HighlightPlugin = NonNullable<
   ComponentProps<typeof ReactMarkdown>['rehypePlugins']
 >[number];
+
+const markdownComponents = {
+  table: ({ children }) => (
+    <div className={styles.tableScroll}>
+      <table>{children}</table>
+    </div>
+  ),
+} satisfies Components;
 
 export const MarkdownPreview = memo(
   ({ markdown, className, contentRef }: MarkdownPreviewProps) => {
@@ -79,6 +88,7 @@ export const MarkdownPreview = memo(
             key={highlightState?.revision ?? 'plain'}
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={rehypePlugins}
+            components={markdownComponents}
           >
             {markdown}
           </ReactMarkdown>
