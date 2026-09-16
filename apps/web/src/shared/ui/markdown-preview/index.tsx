@@ -1,9 +1,13 @@
+import 'katex/dist/katex.min.css';
 import type { ComponentProps, RefObject } from 'react';
 import { memo, useEffect, useMemo, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import { extractFencedLanguageIds } from './fenced-languages';
+import { rehypeNormalizeMath } from './rehype-normalize-math';
 import styles from './styles.module.css';
 
 type MarkdownPreviewProps = {
@@ -57,10 +61,15 @@ export const MarkdownPreview = memo(
 
     const rehypePlugins = useMemo(() => {
       if (highlightState === null) {
-        return [rehypeSlug];
+        return [rehypeSlug, rehypeNormalizeMath, rehypeKatex];
       }
 
-      return [highlightState.plugin, rehypeSlug];
+      return [
+        highlightState.plugin,
+        rehypeSlug,
+        rehypeNormalizeMath,
+        rehypeKatex,
+      ];
     }, [highlightState]);
 
     return (
@@ -68,7 +77,7 @@ export const MarkdownPreview = memo(
         <div className={styles.content} ref={contentRef}>
           <ReactMarkdown
             key={highlightState?.revision ?? 'plain'}
-            remarkPlugins={[remarkGfm]}
+            remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={rehypePlugins}
           >
             {markdown}
