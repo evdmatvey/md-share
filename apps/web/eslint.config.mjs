@@ -28,7 +28,6 @@ export default defineConfig(
       'steiger.config.mjs',
       'vite.config.ts',
       'pwa-workbox.ts',
-      'scripts/**',
       'node_modules',
       'dist',
     ],

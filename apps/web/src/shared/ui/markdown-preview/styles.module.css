@@ -107,6 +107,12 @@
   font-size: inherit;
 }
 
+.content :global(.katex-display) {
+  padding: var(--space-2) 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 .content :global(.hljs) {
   background: transparent;
   color: var(--color-code-text);
